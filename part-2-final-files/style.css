@@ -295,6 +295,33 @@ button:hover {
     margin-bottom: 1rem;
 }
 
+.tool-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.tool-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.7rem 0.95rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    color: #f8fbff;
+    font-weight: 700;
+    min-height: 3.25rem;
+}
+
+.tool-chip img {
+    width: 1.35rem;
+    height: 1.35rem;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
 .timeline-list {
     position: relative;
     display: grid;
@@ -414,9 +441,55 @@ button:hover {
         var(--panel-strong);
 }
 
+.testimonial-slide {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.testimonial-shell {
+    width: min(880px, 100%);
+    height: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.testimonial-layout {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 2rem;
+    align-items: center;
+}
+
+.testimonial-avatar {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 999px;
+    margin: 0 auto;
+    border: 4px solid rgba(255, 255, 255, 0.08);
+}
+
+.testimonial-text {
+    text-align: left;
+}
+
 .testimonial-text p {
     color: #d7e4f3;
     line-height: 1.8;
+}
+
+.testimonial-name {
+    font-family: "Spartan", sans-serif;
+    color: #7dd3fc;
+    font-size: 1.7rem;
+    margin-top: 1rem;
+}
+
+.testimonial-role {
+    color: #9fb3c8;
 }
 
 .contact-illustration {
@@ -670,6 +743,20 @@ button:hover {
 @media (max-width: 767px) {
     .page-container {
         width: min(100% - 1.25rem, 1180px);
+    }
+
+    .testimonial-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.35rem;
+    }
+
+    .testimonial-text {
+        text-align: center;
+    }
+
+    .testimonial-shell {
+        padding: 1.4rem;
     }
 
     .site-header,
