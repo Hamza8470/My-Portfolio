@@ -92,8 +92,8 @@ button:hover {
 
 .hero-card {
     position: relative;
-    max-width: 640px;
-    padding: 2rem;
+    max-width: 680px;
+    padding: 2rem 2.35rem 2rem 2rem;
     border-radius: 28px;
 }
 
@@ -144,7 +144,7 @@ button:hover {
 
 .cta-row {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 1rem;
     margin-top: 2rem;
 }
@@ -153,6 +153,7 @@ button:hover {
 .secondary-button {
     display: inline-flex;
     align-items: center;
+    white-space: nowrap;
     gap: 0.75rem;
     border-radius: 999px;
     padding: 0.95rem 1.35rem;
@@ -429,6 +430,274 @@ button:hover {
 .project-link.disabled {
     cursor: default;
     color: var(--muted);
+}
+
+.certificate-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.certificate-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 1.45rem;
+    border-radius: 22px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.certificate-card h3 {
+    font-family: 'Spartan', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.35;
+    color: #f8fbff;
+}
+
+.certificate-card p {
+    color: #9fb3c8;
+    line-height: 1.7;
+}
+
+.certificate-card:hover {
+    border-color: rgba(56, 189, 248, 0.46);
+    box-shadow: 0 20px 48px rgba(2, 8, 23, 0.42);
+}
+
+.certificate-badge {
+    width: fit-content;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(56, 189, 248, 0.33);
+    background: rgba(56, 189, 248, 0.12);
+    color: #8fd5f4;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.certificate-link {
+    margin-top: auto;
+    color: #8fd5f4;
+    font-weight: 800;
+}
+
+.coding-progress-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.progress-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.8rem;
+    border-radius: 24px;
+}
+
+.view-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.2rem;
+    background: linear-gradient(135deg, #169dc2, #1f3e75);
+    border: none;
+    border-radius: 999px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 280ms ease;
+    width: fit-content;
+    margin-top: auto;
+}
+
+.view-button:hover {
+    box-shadow: 0 12px 32px rgba(21, 149, 182, 0.4);
+    transform: translateY(-2px);
+}
+
+.progress-header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.progress-icon {
+    width: 3rem;
+    height: 3rem;
+    color: #38bdf8;
+    flex-shrink: 0;
+}
+
+.progress-header h3 {
+    font-family: 'Spartan', sans-serif;
+    font-size: 1.4rem;
+    color: #f8fbff;
+    margin-bottom: 0.3rem;
+}
+
+.progress-username {
+    color: #9fb3c8;
+    font-size: 0.95rem;
+}
+
+.progress-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.stat-label {
+    color: #9fb3c8;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.stat-value {
+    font-family: 'Spartan', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.difficulty-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+}
+
+.difficulty-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.difficulty-dot {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 999px;
+}
+
+.difficulty-label {
+    color: #9fb3c8;
+    font-size: 0.9rem;
+}
+
+.difficulty-count {
+    color: #f8fbff;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.github-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.github-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    text-align: center;
+}
+
+.github-stat .stat-label {
+    color: #9fb3c8;
+    font-size: 0.8rem;
+}
+
+.github-stat .stat-value {
+    color: #f8fbff;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.activity-container {
+    padding: 2rem;
+    border-radius: 24px;
+}
+
+.activity-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.activity-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.activity-stat-label {
+    color: #9fb3c8;
+    font-size: 0.92rem;
+}
+
+.activity-stat-value {
+    font-family: 'Spartan', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.activity-graph-wrapper h4 {
+    color: #d7e4f3;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+}
+
+.activity-heatmap {
+    display: inline-grid;
+    grid-template-columns: repeat(30, 1fr);
+    gap: 0.4rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.heatmap-cell {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.6), rgba(16, 185, 129, 0.3));
+    border-radius: 4px;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.activity-legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.legend-cells {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.legend-cell {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 3px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 .timeline-line {
@@ -797,6 +1066,26 @@ button:hover {
 
     .skill-grid {
         grid-template-columns: 1fr;
+    }
+
+    .certificate-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .coding-progress-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .activity-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .github-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .activity-heatmap {
+        grid-template-columns: repeat(15, 1fr);
     }
 
     .timeline-entry {
