@@ -909,6 +909,35 @@ button:hover {
     padding: 4rem 0 3rem;
 }
 
+.cursor-character {
+    position: relative;
+    filter: drop-shadow(0 8px 24px rgba(56, 189, 248, 0.3));
+    animation: float 3s ease-in-out infinite;
+    user-select: none;
+}
+
+.character-container {
+    perspective: 1000px;
+}
+
+#boy-svg {
+    filter: drop-shadow(0 8px 24px rgba(56, 189, 248, 0.3));
+    transition: filter 0.3s ease;
+}
+
+#boy-svg:hover {
+    filter: drop-shadow(0 12px 32px rgba(56, 189, 248, 0.5));
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
 .hero-portrait {
     position: relative;
     justify-self: end;

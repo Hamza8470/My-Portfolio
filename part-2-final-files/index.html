@@ -12,21 +12,7 @@
   <link rel="stylesheet" href="output.css" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <style>
-    .swiper {
-      width: 100%;
-      height: 100%;
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: #38bdf8;
-    }
-
-    .swiper-pagination-bullet {
-      background-color: #38bdf8;
-    }
-  </style>
+  <link rel="stylesheet" href="swiper-overrides.css" />
 </head>
 
 <body class="font-['Nunito']">
@@ -109,7 +95,9 @@
         </div>
 
         <div class="hero-portrait glass-panel reveal">
-          <img src="./hamza1.jpg" alt="Portrait of Mohammed Hamza" />
+          <div id="character-container" class="character-container" style="display: flex; align-items: center; justify-content: center; height: 430px; width: 100%; position: relative;">
+            <object data="./boy-character.svg" type="image/svg+xml" id="boy-svg" style="width: 250px; height: auto;"></object>
+          </div>
         </div>
       </div>
 
@@ -154,7 +142,7 @@
       <div class="about-grid">
         <div class="about-card reveal" style="padding: 1.5rem;">
           <div style="position: relative; overflow: hidden; border-radius: 22px;">
-            <img src="./assets/images/coder.svg" alt="Illustration of developer at work" style="width: 100%;" />
+            <img src="./hamza1.jpg" alt="Portrait of Mohammed Hamza" style="width: 100%; object-fit: cover; border-radius: 22px;" />
           </div>
         </div>
 
@@ -269,7 +257,7 @@
               <span class="proficiency-badge intermediate">Intermediate</span>
             </div>
             <div class="progress-bar">
-              <div class="progress-fill" style="width: 85%;"></div>
+              <div class="progress-fill" style="width: 80%;"></div>
             </div>
           </div>
 
@@ -289,7 +277,7 @@
               <span class="proficiency-badge intermediate">Intermediate</span>
             </div>
             <div class="progress-bar">
-              <div class="progress-fill" style="width: 92%;"></div>
+              <div class="progress-fill" style="width: 80%;"></div>
             </div>
           </div>
         </div>
@@ -317,7 +305,7 @@
               <span class="proficiency-badge intermediate">Intermediate</span>
             </div>
             <div class="progress-bar">
-              <div class="progress-fill" style="width: 88%;"></div>
+              <div class="progress-fill" style="width: 80%;"></div>
             </div>
           </div>
 
@@ -327,7 +315,7 @@
               <span class="proficiency-badge advanced">Advanced</span>
             </div>
             <div class="progress-bar">
-              <div class="progress-fill" style="width: 78%;"></div>
+              <div class="progress-fill" style="width: 85%;"></div>
             </div>
           </div>
 
@@ -868,87 +856,7 @@
   <script src="https://cdn.jsdelivr.net/npm/matter-wrap@0.2.0/build/matter-wrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/matter-attractors@0.1.6/build/matter-attractors.min.js"></script>
   <script src="./matter.js"></script>
-  <script>
-    if (window.Swiper) {
-      new Swiper(".mySwiper", {
-        slidesPerView: 1,
-        spaceBetween: 24,
-        loop: true,
-        autoplay: {
-          delay: 4500,
-          disableOnInteraction: false,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-      });
-    }
-
-    var revealTargets = document.querySelectorAll(".reveal, .reveal-stagger");
-    if ("IntersectionObserver" in window) {
-      var observer = new IntersectionObserver(function (entries, currentObserver) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) {
-            return;
-          }
-          entry.target.classList.add("is-visible");
-          currentObserver.unobserve(entry.target);
-        });
-      }, { threshold: 0.18 });
-
-      revealTargets.forEach(function (node) {
-        observer.observe(node);
-      });
-    } else {
-      revealTargets.forEach(function (node) {
-        node.classList.add("is-visible");
-      });
-    }
-
-    var form = document.getElementById("contact-form");
-    var statusText = document.getElementById("form-status");
-    if (form && statusText) {
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        var name = form.name.value.trim();
-        var email = form.email.value.trim();
-        var message = form.message.value.trim();
-
-        if (!name || !email || !message) {
-          statusText.textContent = "Please fill out your name, email, and message.";
-          return;
-        }
-
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-          statusText.textContent = "Please enter a valid email address.";
-          return;
-        }
-
-        var subject = encodeURIComponent("Portfolio inquiry from " + name);
-        var body = encodeURIComponent(
-          "Name: " + name + "\n" +
-          "Email: " + email + "\n\n" +
-          message
-        );
-
-        statusText.textContent = "message ready to send! Opening your email client...";
-        window.location.href = "mailto:ahmadsalim8470@gmail.com?subject=" + subject + "&body=" + body;
-        form.reset();
-      });
-    }
-
-    var footerYear = document.getElementById("footer-year");
-    if (footerYear) {
-      footerYear.textContent = String(new Date().getFullYear());
-    }
-  </script>
+  <script src="./main.js"></script>
 </body>
 
 </html>

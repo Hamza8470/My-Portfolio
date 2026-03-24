@@ -1,0 +1,13 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #38bdf8;
+}
+
+.swiper-pagination-bullet {
+  background-color: #38bdf8;
+}
