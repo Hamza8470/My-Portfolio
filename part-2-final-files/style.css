@@ -187,14 +187,49 @@ button:hover {
 }
 
 .hero-section .site-header {
-    padding-top: 1.5rem;
+    position: fixed;
+    top: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1180px, calc(100% - 2rem));
+    z-index: 1200;
+    padding: 0.75rem 1rem;
+    border-radius: 16px;
+    background: rgba(6, 17, 31, 0.78);
+    border: 1px solid rgba(116, 159, 204, 0.28);
+    box-shadow: 0 16px 34px rgba(2, 8, 23, 0.34);
+    backdrop-filter: blur(10px);
+}
+
+.hero-section .site-header nav {
+    min-width: 0;
+}
+
+.hero-section .site-header .contact-list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.55rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.hero-section .site-header .contact-list::-webkit-scrollbar {
+    display: none;
+}
+
+.hero-section .site-header .contact-list a {
+    white-space: nowrap;
+    padding: 0.55rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(148, 163, 184, 0.16);
 }
 
 .hero-section .hero-content {
     position: relative;
     z-index: 10;
     max-width: 800px;
-    padding: 5rem 0 4rem;
+    padding: 7.5rem 0 4rem;
 }
 
 .hero-badge {
@@ -498,6 +533,21 @@ button:hover {
 }
 
 @media (max-width: 600px) {
+    .hero-section .site-header {
+        top: 0.5rem;
+        width: calc(100% - 1rem);
+        padding: 0.55rem 0.65rem;
+    }
+
+    .hero-section .site-header .contact-list a {
+        padding: 0.45rem 0.7rem;
+        font-size: 0.82rem;
+    }
+
+    .hero-section .hero-content {
+        padding-top: 8.5rem;
+    }
+
     .hero-stats {
         flex-direction: column;
         gap: 1.2rem;
