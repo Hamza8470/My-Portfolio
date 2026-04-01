@@ -18,92 +18,128 @@ if (window.Swiper) {
   });
 }
 
-// Eye tracking animation
-function initializeEyeTracking() {
-  var characterContainer = document.getElementById("character-container");
-  var boySvg = document.getElementById("boy-svg");
-  if (!characterContainer || !boySvg) return;
+function initializeHeroAutoTyper() {
+  var phrases = [
+    "MERN Stack apps.",
+    "React interfaces.",
+    "REST APIs.",
+    "real-time features.",
+    "things that ship.",
+  ];
+  var el = document.getElementById("typedText");
+  if (!el) {
+    return;
+  }
 
-  // Wait for SVG to load
-  var svgDoc = null;
-  var leftPupil = null;
-  var rightPupil = null;
+  var pIdx = 0;
+  var cIdx = 0;
+  var deleting = false;
+  var typeSpeed = 80;
+  var deleteSpeed = 45;
+  var pauseAfter = 1800;
+  var pauseBefore = 400;
 
-  function loadSVGElements() {
-    try {
-      svgDoc = boySvg.contentDocument || boySvg.getSVGDocument();
-      if (!svgDoc) {
-        setTimeout(loadSVGElements, 100);
+  function type() {
+    var current = phrases[pIdx];
+
+    if (!deleting) {
+      el.textContent = current.slice(0, cIdx + 1);
+      cIdx++;
+      if (cIdx === current.length) {
+        deleting = true;
+        setTimeout(type, pauseAfter);
         return;
       }
-      leftPupil = svgDoc.querySelector(".left-pupil");
-      rightPupil = svgDoc.querySelector(".right-pupil");
-
-      if (leftPupil && rightPupil) {
-        startEyeTracking();
-      }
-    } catch (e) {
-      console.log("SVG not loaded yet, retrying...");
-      setTimeout(loadSVGElements, 100);
+      setTimeout(type, typeSpeed);
+      return;
     }
+
+    el.textContent = current.slice(0, cIdx - 1);
+    cIdx--;
+    if (cIdx === 0) {
+      deleting = false;
+      pIdx = (pIdx + 1) % phrases.length;
+      setTimeout(type, pauseBefore);
+      return;
+    }
+    setTimeout(type, deleteSpeed);
   }
 
-  function startEyeTracking() {
-    var eyeCenterX = 100;
-    var eyeCenterY = 70;
-    var eyeRadius = 5;
-    var maxDistance = 7;
-
-    document.addEventListener("mousemove", function (e) {
-      var containerRect = characterContainer.getBoundingClientRect();
-      var mouseX = e.clientX - containerRect.left;
-      var mouseY = e.clientY - containerRect.top;
-
-      // Calculate eye ball position based on SVG viewBox coordinates
-      var svgRect = boySvg.getBoundingClientRect();
-      var svgWidth = svgRect.width;
-      var svgHeight = svgRect.height;
-
-      var leftEyeX = 75 * (svgWidth / 250);
-      var leftEyeY = 70 * (svgHeight / 300);
-      var rightEyeX = 125 * (svgWidth / 250);
-      var rightEyeY = 70 * (svgHeight / 300);
-
-      var leftEyeScreenX = containerRect.left + leftEyeX;
-      var leftEyeScreenY = containerRect.top + leftEyeY;
-      var rightEyeScreenX = containerRect.left + rightEyeX;
-      var rightEyeScreenY = containerRect.top + rightEyeY;
-
-      // Calculate angle for left eye
-      var deltaX1 = e.clientX - leftEyeScreenX;
-      var deltaY1 = e.clientY - leftEyeScreenY;
-      var distance1 = Math.sqrt(deltaX1 * deltaX1 + deltaY1 * deltaY1);
-      var angle1 = Math.atan2(deltaY1, deltaX1);
-
-      // Calculate angle for right eye
-      var deltaX2 = e.clientX - rightEyeScreenX;
-      var deltaY2 = e.clientY - rightEyeScreenY;
-      var distance2 = Math.sqrt(deltaX2 * deltaX2 + deltaY2 * deltaY2);
-      var angle2 = Math.atan2(deltaY2, deltaX2);
-
-      // Position left pupil
-      var pupilX1 = Math.cos(angle1) * maxDistance;
-      var pupilY1 = Math.sin(angle1) * maxDistance;
-      leftPupil.setAttribute("cx", 75 + pupilX1);
-      leftPupil.setAttribute("cy", 70 + pupilY1);
-
-      // Position right pupil
-      var pupilX2 = Math.cos(angle2) * maxDistance;
-      var pupilY2 = Math.sin(angle2) * maxDistance;
-      rightPupil.setAttribute("cx", 125 + pupilX2);
-      rightPupil.setAttribute("cy", 70 + pupilY2);
-    });
-  }
-
-  loadSVGElements();
+  setTimeout(type, 1200);
 }
 
-initializeEyeTracking();
+function initializeHeroParticles() {
+  var container = document.getElementById("heroParticles");
+  if (!container) {
+    return;
+  }
+
+  var count = 30;
+  for (var i = 0; i < count; i++) {
+    var p = document.createElement("div");
+    p.className = "particle";
+
+    var size = Math.random() * 2.5 + 1;
+    var left = Math.random() * 100;
+    var delay = Math.random() * 12;
+    var duration = Math.random() * 10 + 8;
+    var opacity = Math.random() * 0.5 + 0.2;
+
+    p.style.left = left + "%";
+    p.style.bottom = "-10px";
+    p.style.width = size + "px";
+    p.style.height = size + "px";
+    p.style.opacity = String(opacity);
+    p.style.animationDuration = duration + "s";
+    p.style.animationDelay = delay + "s";
+
+    container.appendChild(p);
+  }
+}
+
+function initializeHeroStatCounters() {
+  var stats = [
+    { selector: ".hero-stat:nth-child(2) .hero-stat-num", target: 370, suffix: "" },
+    { selector: ".hero-stat:nth-child(3) .hero-stat-num", target: 450, suffix: "+" },
+  ];
+
+  var heroStats = document.querySelector(".hero-stats");
+  if (!heroStats || !("IntersectionObserver" in window)) {
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) {
+        return;
+      }
+      observer.disconnect();
+
+      stats.forEach(function (item) {
+        var el = document.querySelector(item.selector);
+        if (!el) {
+          return;
+        }
+
+        var count = 0;
+        var step = Math.ceil(item.target / 60);
+        var interval = setInterval(function () {
+          count = Math.min(count + step, item.target);
+          el.textContent = String(count) + item.suffix;
+          if (count >= item.target) {
+            clearInterval(interval);
+          }
+        }, 20);
+      });
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(heroStats);
+}
+
+initializeHeroAutoTyper();
+initializeHeroParticles();
+initializeHeroStatCounters();
 
 var revealTargets = document.querySelectorAll(".reveal, .reveal-stagger");
 if ("IntersectionObserver" in window) {

@@ -8,6 +8,9 @@
     content="Mohammed Hamza is a MERN stack developer building responsive products, polished interfaces, and scalable web experiences." />
   <title>Mohammed Hamza | MERN Stack Developer</title>
   <link rel="icon" type="image/svg+xml" href="./assets/images/name-logo-favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="font.css" />
   <link rel="stylesheet" href="output.css" />
   <link rel="stylesheet" href="style.css" />
@@ -16,10 +19,12 @@
 </head>
 
 <body class="font-['Nunito']">
-  <section class="hero-shell">
-    <div class="floating-orb one"></div>
-    <div class="floating-orb two"></div>
-    <div class="absolute inset-0 hidden md:block" id="wrapper-canvas"></div>
+  <section class="hero-section" id="top">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+    <div class="hero-particles" id="heroParticles"></div>
 
     <div class="page-container">
       <header class="site-header">
@@ -45,85 +50,67 @@
             <a href="#skills">Skills</a>
             <a href="#education">Education</a>
             <a href="#latest-works">Projects</a>
-            <a href="#certificates">Certificates</a> <a href="#coding-progress">Coding Progress</a> <a
-              href="#testimonials">Testimonials</a>
+            <a href="#certificates">Certificates</a>
+            <a href="#coding-progress">Coding Progress</a>
+            <a href="#testimonials">Testimonials</a>
             <a href="#contact">Contact</a>
           </div>
         </nav>
       </header>
 
-      <div class="hero-layout" id="top">
-        <div class="hero-card glass-panel reveal">
-          <span class="eyebrow">Available for full time roles</span>
-          <h1 style="font-family: 'Spartan', sans-serif; font-size: clamp(2.8rem, 7vw, 5.3rem); line-height: 0.95;">
-            Mohammed Hamza
-          </h1>
-          <p
-            style="font-family: 'Merriweather', serif; font-style: italic; color: #8fd5f4; margin-top: 1rem; font-size: 1.1rem;">
-            MERN Stack Developer crafting fast, modern, conversion-focused web experiences
-          </p>
-          <div class="cta-row">
-            <a href="#latest-works" class="primary-button">
-              Explore Projects
-              <span aria-hidden="true">-&gt;</span>
-            </a>
-            <a href="#contact" class="secondary-button">Start a Conversation</a>
-            <a href="https://drive.google.com/file/d/1NMFTPHV4ooQQSLrEnJufgRjmTqFOgVd2/view" class="secondary-button resume-cta" download>
-              📩Download Resume
-              <span aria-hidden="true">-&gt;</span>
-            </a>
-          </div>
-
-          <div class="hero-stat-grid reveal-stagger">
-            <div class="hero-stat">
-              <strong>2+ years</strong>
-              <span>Building production web apps</span>
-            </div>
-            <div class="hero-stat">
-              <strong>MERN</strong>
-              <span>React, Node, Express, MongoDB</span>
-            </div>
-            <div class="hero-stat">
-              <strong>UI + Dev</strong>
-              <span>Performance, polish, responsiveness</span>
-            </div>
-          </div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-pulse"></span>
+          Available for full-time roles
         </div>
 
-        <div class="hero-portrait glass-panel reveal">
-          <div id="character-container" class="character-container" style="display: flex; align-items: center; justify-content: center; height: 430px; width: 100%; position: relative;">
-            <object data="./boy-character.svg" type="image/svg+xml" id="boy-svg" style="width: 250px; height: auto;"></object>
+        <p class="hero-greeting">Hey there, I'm</p>
+
+        <h1 class="hero-name">
+          Mohammed <span class="name-highlight">Hamza</span>
+        </h1>
+
+        <div class="hero-role-line">
+          <span class="hero-role-prefix">I build</span>
+          <span class="hero-typed-text" id="typedText"></span>
+          <span class="hero-cursor"></span>
+        </div>
+
+        <p class="hero-desc">
+          MERN Stack Developer crafting <strong>fast, modern, conversion-focused</strong>
+          web experiences. From clean APIs to polished UIs - performance and design, both.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#latest-works" class="btn-hero-primary">Explore Projects -&gt;</a>
+          <a href="#contact" class="btn-hero-secondary">Start a Conversation</a>
+          <a href="https://drive.google.com/file/d/1NMFTPHV4ooQQSLrEnJufgRjmTqFOgVd2/view" target="_blank" rel="noopener noreferrer" class="btn-hero-resume">📩 Download Resume</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">2<span>+</span></div>
+            <div class="hero-stat-label">Years building<br />production web apps</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">370</div>
+            <div class="hero-stat-label">LeetCode<br />problems solved</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">450<span>+</span></div>
+            <div class="hero-stat-label">GitHub<br />commits</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">8.37</div>
+            <div class="hero-stat-label">CGPA at<br />LPU</div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="social-rail reveal" style="position: absolute; right: 0; top: 10rem; z-index: 5;">
-        <a href="https://www.linkedin.com/in/mohammed-hamza-qamar-08912b203/" target="_blank" rel="noopener noreferrer"
-          aria-label="LinkedIn">
-          <svg class="w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path fill="currentColor"
-              d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
-          </svg>
-        </a>
-        <a href="https://x.com/mohdhamza47" target="_blank" rel="noopener noreferrer" aria-label="X">
-          <svg class="w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <path fill="currentColor"
-              d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
-          </svg>
-        </a>
-        <a href="https://instagram.com/mohdhamza47" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <svg class="w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path fill="currentColor"
-              d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
-          </svg>
-        </a>
-        <a href="mailto:ahmadsalim8470@gmail.com" aria-label="Email">
-          <svg class="w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <path fill="currentColor"
-              d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z" />
-          </svg>
-        </a>
-      </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Scroll to explore
     </div>
   </section>
 
