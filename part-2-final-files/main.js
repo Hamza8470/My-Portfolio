@@ -18,6 +18,97 @@ if (window.Swiper) {
   });
 }
 
+function initializeMobileNavbar() {
+  var header = document.querySelector(".hero-section .site-header");
+  var toggle = document.getElementById("nav-toggle");
+  var nav = document.getElementById("site-nav");
+  var links = nav ? nav.querySelectorAll(".nav-link") : [];
+
+  if (!header || !toggle || !nav) {
+    return;
+  }
+
+  function closeMenu() {
+    header.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+  }
+
+  toggle.addEventListener("click", function () {
+    var open = header.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  links.forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      var href = link.getAttribute("href") || "";
+      if (!href.startsWith("#")) {
+        return;
+      }
+
+      var target = document.querySelector(href);
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+      closeMenu();
+
+      var headerHeight = header.getBoundingClientRect().height + 12;
+      var targetY = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+      window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
+    });
+  });
+
+  document.addEventListener("click", function (event) {
+    if (!header.contains(event.target)) {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 767) {
+      closeMenu();
+    }
+  });
+
+  var sectionIds = [
+    "about-me",
+    "skills",
+    "education",
+    "latest-works",
+    "certificates",
+    "coding-progress",
+    "testimonials",
+    "contact",
+  ];
+
+  function updateActiveLink() {
+    var headerHeight = header.getBoundingClientRect().height;
+    var scrollPos = window.scrollY + headerHeight + 30;
+    var activeId = "";
+
+    sectionIds.forEach(function (id) {
+      var section = document.getElementById(id);
+      if (!section) {
+        return;
+      }
+      if (scrollPos >= section.offsetTop) {
+        activeId = id;
+      }
+    });
+
+    links.forEach(function (link) {
+      var href = link.getAttribute("href");
+      link.classList.toggle("is-active", href === "#" + activeId);
+    });
+  }
+
+  window.addEventListener("scroll", updateActiveLink, { passive: true });
+  updateActiveLink();
+}
+
+initializeMobileNavbar();
+
 function initializeHeroAutoTyper() {
   var phrases = [
     "MERN Stack apps.",

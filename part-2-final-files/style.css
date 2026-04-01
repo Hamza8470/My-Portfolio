@@ -205,6 +205,28 @@ button:hover {
     min-width: 0;
 }
 
+.nav-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    background: rgba(255, 255, 255, 0.05);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0;
+}
+
+.nav-toggle-line {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #dce9f7;
+    border-radius: 99px;
+}
+
 .hero-section .site-header .contact-list {
     display: flex;
     flex-wrap: nowrap;
@@ -223,6 +245,13 @@ button:hover {
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.hero-section .site-header .contact-list a:hover,
+.hero-section .site-header .contact-list a.is-active {
+    background: rgba(56, 189, 248, 0.14);
+    border-color: rgba(56, 189, 248, 0.35);
+    color: #dff4ff;
 }
 
 .hero-section .hero-content {
@@ -532,20 +561,56 @@ button:hover {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
     .hero-section .site-header {
         top: 0.5rem;
         width: calc(100% - 1rem);
         padding: 0.55rem 0.65rem;
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        row-gap: 0.5rem;
+        column-gap: 0.5rem;
+    }
+
+    .hero-section .site-header > a {
+        z-index: 2;
+    }
+
+    .hero-section .site-header nav {
+        grid-column: 1 / -1;
+        width: 100%;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 220ms ease, opacity 220ms ease;
+    }
+
+    .hero-section .site-header.is-open nav {
+        max-height: 360px;
+        opacity: 1;
+    }
+
+    .hero-section .site-header .contact-list {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.45rem;
+        overflow: visible;
+        margin-top: 0.25rem;
     }
 
     .hero-section .site-header .contact-list a {
-        padding: 0.45rem 0.7rem;
-        font-size: 0.82rem;
+        padding: 0.6rem 0.72rem;
+        font-size: 0.88rem;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+        justify-self: end;
     }
 
     .hero-section .hero-content {
-        padding-top: 8.5rem;
+        padding-top: 9.25rem;
     }
 
     .hero-stats {
